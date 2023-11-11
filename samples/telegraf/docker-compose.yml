@@ -1,15 +1,15 @@
-version: '3'
+version: "3"
 services:
   telegraf:
-    image: telegraf:1.21.2-alpine
+    image: telegraf:1.28.3
     volumes:
-    - ./telegraf/etc/telegraf.conf:/etc/telegraf/telegraf.conf:ro
+      - ./telegraf/etc/telegraf.conf:/etc/telegraf/telegraf.conf:ro
     depends_on:
       - influxdb
     links:
       - influxdb
     ports:
-    - "8125:8125"
+      - "8125:8125"
     networks:
       - teleg
 
@@ -28,7 +28,7 @@ services:
       - teleg
 
   grafana:
-    image: grafana/grafana:8.3.3
+    image: grafana/grafana:10.2.0
     depends_on:
       - influxdb
     environment:
